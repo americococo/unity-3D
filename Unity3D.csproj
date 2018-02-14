@@ -79,6 +79,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\01Script\MainGame\Character.cs" />
+    <Compile Include="Assets\01Script\State\IdleState.cs" />
+    <Compile Include="Assets\01Script\State\MoveState.cs" />
+    <Compile Include="Assets\01Script\State\State.cs" />
     <Compile Include="Assets\01Script\System\GameManger.cs" />
     <Compile Include="Assets\01Script\System\InputManger.cs" />
   </ItemGroup>
