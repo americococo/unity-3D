@@ -22,7 +22,7 @@ public class Character : MonoBehaviour
 
     void UpdateInput()
     {
-        if (InputManger.instance.IsMouseDown())
+        if (InputManger.instance.IsMouseDown() )
         {
             Vector3 mousePosition;
 
@@ -37,8 +37,8 @@ public class Character : MonoBehaviour
                 _stateList[_stateType].UpdateInput();
 
             }
-
         }
+       
     }
     //State
     public enum eState
@@ -103,5 +103,27 @@ public class Character : MonoBehaviour
     public void Move(Vector3 velocity)
     {
         gameObject.GetComponent<CharacterController>().Move(velocity);
+    }
+
+
+    public void Rotate(Vector3 direction)
+    {
+        Quaternion characterTargetRay = Quaternion.LookRotation(direction);
+
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, characterTargetRay, 360.0f * Time.deltaTime);
+    }
+
+
+
+
+    //animator
+
+    //프리펩으로 변경해야함
+    public GameObject characterVisual;
+
+
+    public void SetAnimationTrigger(string Trigger)
+    {
+        characterVisual.GetComponent<Animator>().SetTrigger(Trigger);
     }
 }

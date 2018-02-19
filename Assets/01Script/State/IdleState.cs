@@ -6,7 +6,7 @@ public class IdleState : State
 {
     override public void Start()
     {
-
+        _character.SetAnimationTrigger("Idle");
     }
 
     override public void Stop()
@@ -23,5 +23,4 @@ public class IdleState : State
         Debug.Log("Check 1");
         _character.ChangeState(Character.eState.MOVE);
     }
-
 }

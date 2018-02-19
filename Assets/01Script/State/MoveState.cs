@@ -12,6 +12,7 @@ public class MoveState : State
     override public void Start()
     {
         _destination = _character.GetTargetPosition();
+        _character.SetAnimationTrigger("Move");
     }
 
     override public void Stop()
@@ -21,6 +22,8 @@ public class MoveState : State
 
     override public void Update()
     {
+        _destination.y = _character.Getposition().y;
+
         Vector3 direction = (_destination - _character.transform.position).normalized;
 
         _velocity = direction * 6.0f;
@@ -29,11 +32,16 @@ public class MoveState : State
         if (_character.isGrounded())
             snapGround = Vector3.down;
 
+        
         //목적지와 현재 위치가 일정 거리 이상이면 이동
         
         float distance = Vector3.Distance(_destination, _character.Getposition());
         if (0.5f < distance)
         {
+            
+            _character.Rotate(direction);
+            
+
             _character.Move(_velocity * Time.deltaTime + snapGround);
         }
 

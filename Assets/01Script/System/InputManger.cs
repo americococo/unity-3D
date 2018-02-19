@@ -25,9 +25,14 @@ public class InputManger
 
     public void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+
+
+        if(Input.GetMouseButton(0))
         {
-            MouseDown();
+            if (eButtonState.UP == _buttonState)
+                _buttonState = eButtonState.DOWN;
+           else if (eButtonState.DOWN == _buttonState)
+                _buttonState = eButtonState.HOLD;
         }
         if (Input.GetMouseButtonUp(0))
         {
@@ -37,17 +42,27 @@ public class InputManger
 
     bool _isMouseDown = false;
 
+    enum eButtonState
+    {
+        DOWN,
+        HOLD,
+        UP,
+    }
+
+    eButtonState _buttonState = eButtonState.UP;
+
     void MouseDown()
     {
-        _isMouseDown = true;
+        //_isMouseDown = true;
+        _buttonState = eButtonState.DOWN;
     }
     void MouseUp()
     {
-        _isMouseDown = false;
+        _buttonState = eButtonState.UP;
     }
     public bool IsMouseDown()
     {
-        return _isMouseDown;
+        return (eButtonState.DOWN == _buttonState);
     }
 
     public Vector3 GetCursorPosition()
