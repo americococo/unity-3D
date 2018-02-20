@@ -19,7 +19,8 @@ public class GameCamera : MonoBehaviour
         if(null != _lookTarget)
         {
             Vector3 startLookPosition = _lookTarget.Getposition() + _offset;
-            Vector3 relativePos = Quaternion.Euler(_verticalAngle, horizonalAngle, 0) * new Vector3(0, 0, -_distance);//캐릭터에 대한 상대적 거리
+           //Vector3 relativePos = Quaternion.Euler(_verticalAngle, horizonalAngle, 0) * new Vector3(0, 0, -_distance);//캐릭터에 대한 상대적 거리
+            Vector3 relativePos = _lookTarget.getRotate() * new Vector3(0, 0, -_distance);
             transform.position = startLookPosition + relativePos;
             
             Vector3 EndlookPosition = _lookTarget.Getposition() + _offset;
@@ -30,7 +31,7 @@ public class GameCamera : MonoBehaviour
     
 
 
-    public Character _lookTarget=null;
+    public Player _lookTarget=null;
     Vector3 _offset =new Vector3(0,1.5f,0);
     float _verticalAngle = 10.0f;
     float horizonalAngle = 0.0f;

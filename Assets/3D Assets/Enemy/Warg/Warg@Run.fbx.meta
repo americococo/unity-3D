@@ -109,7 +109,115 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Run
+      takeName: Run
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: RETMESH2
+        weight: 1
+      - path: RETMESH2/EYE
+        weight: 1
+      - path: RETMESH2/RUVret
+        weight: 1
+      - path: RETMESH2/TEETHret
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/CENTER_C
+        weight: 1
+      - path: Root/CENTER_C/HIPS_C
+        weight: 1
+      - path: Root/CENTER_C/HIPS_C/TAIL1_1_C
+        weight: 1
+      - path: Root/CENTER_C/HIPS_C/TAIL1_1_C/NW_TAIL1_2_C
+        weight: 1
+      - path: Root/CENTER_C/HIPS_C/UPLEG_L
+        weight: 1
+      - path: Root/CENTER_C/HIPS_C/UPLEG_L/LEG_L
+        weight: 1
+      - path: Root/CENTER_C/HIPS_C/UPLEG_L/LEG_L/FOOT_L
+        weight: 1
+      - path: Root/CENTER_C/HIPS_C/UPLEG_L/LEG_L/FOOT_L/TOEBASE_L
+        weight: 1
+      - path: Root/CENTER_C/HIPS_C/UPLEG_L/LEG_L/FOOT_L/TOEBASE_L/TOEBASE_TIP_L
+        weight: 1
+      - path: Root/CENTER_C/HIPS_C/UPLEG_R
+        weight: 1
+      - path: Root/CENTER_C/HIPS_C/UPLEG_R/LEG_R
+        weight: 1
+      - path: Root/CENTER_C/HIPS_C/UPLEG_R/LEG_R/FOOT_R
+        weight: 1
+      - path: Root/CENTER_C/HIPS_C/UPLEG_R/LEG_R/FOOT_R/TOEBASE_R
+        weight: 1
+      - path: Root/CENTER_C/HIPS_C/UPLEG_R/LEG_R/FOOT_R/TOEBASE_R/TOEBASE_TIP_R
+        weight: 1
+      - path: Root/CENTER_C/SPINE1_C
+        weight: 1
+      - path: Root/CENTER_C/SPINE1_C/SPINE2_C
+        weight: 1
+      - path: Root/CENTER_C/SPINE1_C/SPINE2_C/SPINE3_C
+        weight: 1
+      - path: Root/CENTER_C/SPINE1_C/SPINE2_C/SPINE3_C/NECK1_C
+        weight: 1
+      - path: Root/CENTER_C/SPINE1_C/SPINE2_C/SPINE3_C/NECK1_C/HEAD1_C
+        weight: 1
+      - path: Root/CENTER_C/SPINE1_C/SPINE2_C/SPINE3_C/NECK1_C/HEAD1_C/EX_JAWB1_1_C
+        weight: 1
+      - path: Root/CENTER_C/SPINE1_C/SPINE2_C/SPINE3_C/NECK1_C/HEAD1_C/EX_JAWB1_1_C/NW_JAWB1_2_C
+        weight: 1
+      - path: Root/CENTER_C/SPINE1_C/SPINE2_C/SPINE3_C/NECK1_C/HEAD1_C/NW_HEAD2_C
+        weight: 1
+      - path: Root/CENTER_C/SPINE1_C/SPINE2_C/SPINE3_C/SHOULDER_L
+        weight: 1
+      - path: Root/CENTER_C/SPINE1_C/SPINE2_C/SPINE3_C/SHOULDER_L/ARM_L
+        weight: 1
+      - path: Root/CENTER_C/SPINE1_C/SPINE2_C/SPINE3_C/SHOULDER_L/ARM_L/FOREARM_L
+        weight: 1
+      - path: Root/CENTER_C/SPINE1_C/SPINE2_C/SPINE3_C/SHOULDER_L/ARM_L/FOREARM_L/HAND_L
+        weight: 1
+      - path: Root/CENTER_C/SPINE1_C/SPINE2_C/SPINE3_C/SHOULDER_L/ARM_L/FOREARM_L/HAND_L/FINGERBASE_L
+        weight: 1
+      - path: Root/CENTER_C/SPINE1_C/SPINE2_C/SPINE3_C/SHOULDER_L/ARM_L/FOREARM_L/HAND_L/FINGERBASE_L/NW_FINGERBASE_TIP_L
+        weight: 1
+      - path: Root/CENTER_C/SPINE1_C/SPINE2_C/SPINE3_C/SHOULDER_R
+        weight: 1
+      - path: Root/CENTER_C/SPINE1_C/SPINE2_C/SPINE3_C/SHOULDER_R/ARM_R
+        weight: 1
+      - path: Root/CENTER_C/SPINE1_C/SPINE2_C/SPINE3_C/SHOULDER_R/ARM_R/FOREARM_R
+        weight: 1
+      - path: Root/CENTER_C/SPINE1_C/SPINE2_C/SPINE3_C/SHOULDER_R/ARM_R/FOREARM_R/HAND_R
+        weight: 1
+      - path: Root/CENTER_C/SPINE1_C/SPINE2_C/SPINE3_C/SHOULDER_R/ARM_R/FOREARM_R/HAND_R/FINGERBASE_R
+        weight: 1
+      - path: Root/CENTER_C/SPINE1_C/SPINE2_C/SPINE3_C/SHOULDER_R/ARM_R/FOREARM_R/HAND_R/FINGERBASE_R/NW_FINGERBASE_TIP_R
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

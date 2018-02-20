@@ -21,6 +21,6 @@ public class IdleState : State
     override public void UpdateInput()
     {
         Debug.Log("Check 1");
-        _character.ChangeState(Character.eState.MOVE);
+        _character.ChangeState(Player.eState.MOVE);
     }
 }

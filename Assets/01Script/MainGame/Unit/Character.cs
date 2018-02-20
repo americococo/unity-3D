@@ -5,54 +5,33 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
 
-    // Use this for initialization
     void Start()
     {
         InitState();
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void UpdateCharacter()
     {
-        UpdateInput();
-        
         _stateList[_stateType].Update();
         UpdateChangeState();
     }
 
-    void UpdateInput()
+    void Update()
     {
-        if (InputManger.instance.IsMouseDown() )
-        {
-            Vector3 mousePosition;
-
-            mousePosition = InputManger.instance.GetCursorPosition();
-            Ray ray = Camera.main.ScreenPointToRay(mousePosition);
-
-            RaycastHit hitInfo;
-
-            if (Physics.Raycast(ray, out hitInfo, 100.0f, 1 << LayerMask.NameToLayer("Ground")))
-            {
-                _targetPosition = hitInfo.point;
-                _stateList[_stateType].UpdateInput();
-
-            }
-        }
-       
+        UpdateCharacter();
     }
+
     //State
     public enum eState
     {
         IDLE,
         MOVE,
     }
-
-   
-
-    eState _stateType = eState.IDLE;
+    
+    protected eState _stateType = eState.IDLE;
     eState _nextStateType = eState.IDLE;
 
-    Dictionary<eState,State> _stateList = new Dictionary<eState, State>();
+    protected Dictionary<eState, State> _stateList = new Dictionary<eState, State>();
 
     void InitState()
     {
@@ -64,6 +43,7 @@ public class Character : MonoBehaviour
 
         _stateList.Add(eState.IDLE, idleState);
         _stateList.Add(eState.MOVE, moveState);
+
     }
 
 
@@ -71,7 +51,7 @@ public class Character : MonoBehaviour
     {
         _nextStateType = stateType;
     }
-    
+
     void UpdateChangeState()
     {
         if (_stateType != _nextStateType)
@@ -81,9 +61,10 @@ public class Character : MonoBehaviour
 
         }
     }
+    
 
     //Move
-    Vector3 _targetPosition = Vector3.zero;
+    protected Vector3 _targetPosition = Vector3.zero;
 
     public Vector3 GetTargetPosition()
     {
@@ -113,12 +94,12 @@ public class Character : MonoBehaviour
         transform.rotation = Quaternion.RotateTowards(transform.rotation, characterTargetRay, 360.0f * Time.deltaTime);
     }
 
+    public Quaternion getRotate()
+    {
+        return transform.rotation;
+    }
 
 
-
-    //animator
-
-    //프리펩으로 변경해야함
     public GameObject characterVisual;
 
 
@@ -126,4 +107,5 @@ public class Character : MonoBehaviour
     {
         characterVisual.GetComponent<Animator>().SetTrigger(Trigger);
     }
+
 }

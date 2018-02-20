@@ -47,7 +47,7 @@ public class MoveState : State
 
         else
         {
-            _character.ChangeState(Character.eState.IDLE);
+            _character.ChangeState(Player.eState.IDLE);
         }
     }
     override public void UpdateInput()

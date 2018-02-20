@@ -79,7 +79,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\01Script\GameCamera.cs" />
-    <Compile Include="Assets\01Script\MainGame\Character.cs" />
+    <Compile Include="Assets\01Script\MainGame\Unit\Character.cs" />
+    <Compile Include="Assets\01Script\MainGame\Unit\Monster.cs" />
+    <Compile Include="Assets\01Script\MainGame\Unit\Player.cs" />
     <Compile Include="Assets\01Script\State\IdleState.cs" />
     <Compile Include="Assets\01Script\State\MoveState.cs" />
     <Compile Include="Assets\01Script\State\State.cs" />
