@@ -14,12 +14,14 @@ public class AttackArea : MonoBehaviour {
 		
 	}
 
+    //message
+
     public void Enable()
     {
-
+        GetComponent<Collider>().enabled = true;
     }
     public void disable()
     {
-
+        GetComponent<Collider>().enabled = false;
     }
 }
