@@ -26,6 +26,7 @@ public class Character : MonoBehaviour
     {
         IDLE,
         MOVE,
+        Attack,
     }
     
     protected eState _stateType = eState.IDLE;
@@ -35,17 +36,29 @@ public class Character : MonoBehaviour
 
     void InitState()
     {
-        State idleState = new IdleState();
-        State moveState = new MoveState();
+        StateInit(eState.Attack, new AttackState());
+        StateInit(eState.IDLE, new IdleState());
+        StateInit(eState.MOVE, new MoveState());
 
-        idleState.Init(this);
-        moveState.Init(this);
+        //State idleState = new IdleState();
+        //State moveState = new MoveState();
+        //State attackState = new AttackState();
 
-        _stateList.Add(eState.IDLE, idleState);
-        _stateList.Add(eState.MOVE, moveState);
+        //idleState.Init(this);
+        //moveState.Init(this);
+        //attackState.Init(this);
+
+        //_stateList.Add(eState.IDLE, idleState);
+        //_stateList.Add(eState.MOVE, moveState);
+        //_stateList.Add(eState.Attack, attackState);
 
     }
 
+    void StateInit(eState estate, State state)
+    {
+        state.Init(this);
+        _stateList.Add(estate, state);
+    }
 
     public void ChangeState(eState stateType)
     {
@@ -103,9 +116,36 @@ public class Character : MonoBehaviour
     public GameObject characterVisual;
 
 
+    public AnimationPlayer Getanimation()
+    {
+        return characterVisual.GetComponent<AnimationPlayer>();
+    }
+
     public void SetAnimationTrigger(string Trigger)
     {
         characterVisual.GetComponent<Animator>().SetTrigger(Trigger);
     }
 
+
+    AttackArea[] _attackAreas;
+
+    void InitAttackInfo()
+    {
+        _attackAreas = GetComponentsInChildren<AttackArea>();
+    }
+
+    public void AttackStart()
+    {
+        for(int i=0;i<=_attackAreas.Length;i++)
+        {
+            _attackAreas[i].Enable();
+        }
+    }
+    public void AttackEnd()
+    {
+        for (int i = 0; i <= _attackAreas.Length; i++)
+        {
+            _attackAreas[i].disable();
+        }
+    }
 }

@@ -38,9 +38,20 @@ public class InputManger
         {
             MouseUp();
         }
-    }
 
-    bool _isMouseDown = false;
+        if (Input.GetMouseButton(1))
+        {
+            if (eButtonState.UP == _AttackbuttonState)
+                _AttackbuttonState = eButtonState.DOWN;
+            else if (eButtonState.DOWN == _AttackbuttonState)
+                _AttackbuttonState= eButtonState.HOLD;
+        }
+        if (Input.GetMouseButtonUp(1))
+        {
+            AttackMouseUp();
+        }
+
+    }
 
     enum eButtonState
     {
@@ -63,6 +74,25 @@ public class InputManger
     public bool IsMouseDown()
     {
         return (eButtonState.DOWN == _buttonState);
+    }
+
+
+    eButtonState _AttackbuttonState = eButtonState.UP;
+
+    void AttackMouseDown()
+    {
+        //_isMouseDown = true;
+        _AttackbuttonState = eButtonState.DOWN;
+    }
+    void AttackMouseUp()
+    {
+        _AttackbuttonState = eButtonState.UP;
+    }
+
+
+    public bool IsAttackButtonDown()
+    {
+        return (eButtonState.DOWN == _AttackbuttonState);
     }
 
     public Vector3 GetCursorPosition()

@@ -27,10 +27,15 @@ public class Player : Character
             {
                 _targetPosition = hitInfo.point;
                 _stateList[_stateType].UpdateInput();
-
             }
         }
-       
+
+        if (InputManger.instance.IsAttackButtonDown())
+        {
+            
+            ChangeState(eState.Attack);
+        }
+
     }
  
 }
