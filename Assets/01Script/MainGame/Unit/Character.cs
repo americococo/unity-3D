@@ -4,9 +4,25 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    public enum eCharacterType
+    {
+        MONSTER,
+        PLAYER,
+        NONE,
+    }
+
+    protected eCharacterType _characterType = eCharacterType.NONE;
 
     void Start()
     {
+        Init(); 
+    }
+
+
+    virtual public void Init()
+    {
+        InitAttackInfo();
+        DemageInfo();
         InitState();
     }
 
@@ -27,6 +43,7 @@ public class Character : MonoBehaviour
         IDLE,
         MOVE,
         Attack,
+        CHASE,
     }
     
     protected eState _stateType = eState.IDLE;
@@ -39,20 +56,9 @@ public class Character : MonoBehaviour
         StateInit(eState.Attack, new AttackState());
         StateInit(eState.IDLE, new IdleState());
         StateInit(eState.MOVE, new MoveState());
-
-        //State idleState = new IdleState();
-        //State moveState = new MoveState();
-        //State attackState = new AttackState();
-
-        //idleState.Init(this);
-        //moveState.Init(this);
-        //attackState.Init(this);
-
-        //_stateList.Add(eState.IDLE, idleState);
-        //_stateList.Add(eState.MOVE, moveState);
-        //_stateList.Add(eState.Attack, attackState);
-
+        StateInit(eState.CHASE, new ChaseState());
     }
+
 
     void StateInit(eState estate, State state)
     {
@@ -127,6 +133,12 @@ public class Character : MonoBehaviour
     }
 
 
+    public eCharacterType getCharacterType()
+    {
+        return _characterType;
+    }
+
+
     AttackArea[] _attackAreas;
 
     void InitAttackInfo()
@@ -136,16 +148,31 @@ public class Character : MonoBehaviour
 
     public void AttackStart()
     {
-        for(int i=0;i<=_attackAreas.Length;i++)
+        for(int i=0;i<_attackAreas.Length;i++)
         {
             _attackAreas[i].Enable();
+            
         }
     }
     public void AttackEnd()
     {
-        for (int i = 0; i <= _attackAreas.Length; i++)
+        for (int i = 0; i < _attackAreas.Length; i++)
         {
             _attackAreas[i].disable();
         }
     }
+
+    
+    public void DemageInfo()
+    {
+        HitArea[] _HitAreas=GetComponentsInChildren<HitArea>();
+
+        for(int i =0; i<_HitAreas.Length;i++)
+        {
+            _HitAreas[i].init(this);
+        }
+
+    }
+
+
 }

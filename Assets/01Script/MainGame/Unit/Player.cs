@@ -5,6 +5,11 @@ using UnityEngine;
 public class Player : Character
 {
 
+    public override void Init()
+    {
+        base.Init();
+        _characterType = eCharacterType.PLAYER;
+    }
 
     public override void UpdateCharacter()
     {
@@ -14,7 +19,7 @@ public class Player : Character
 
     void UpdateInput()
     {
-        if (InputManger.instance.IsMouseDown() )
+        if (InputManger.instance.IsMouseDown())
         {
             Vector3 mousePosition;
 
@@ -22,20 +27,40 @@ public class Player : Character
             Ray ray = Camera.main.ScreenPointToRay(mousePosition);
 
             RaycastHit hitInfo;
+            LayerMask layerMask = (1 << LayerMask.NameToLayer("Ground")) | (1 << LayerMask.NameToLayer("Character"));
 
-            if (Physics.Raycast(ray, out hitInfo, 100.0f, 1 << LayerMask.NameToLayer("Ground")))
+            if (Physics.Raycast(ray, out hitInfo, 100.0f, layerMask))
             {
-                _targetPosition = hitInfo.point;
-                _stateList[_stateType].UpdateInput();
+                if (hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
+                {
+                    _targetPosition = hitInfo.point;
+
+                    _stateList[_stateType].UpdateInput();
+
+                }
+                else if (hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Character"))
+                {
+                    HitArea hitArea = hitInfo.collider.gameObject.GetComponent<HitArea>();
+                    Character character = hitArea.getCharacter();
+
+                    switch (character.getCharacterType())
+                    {
+                        case eCharacterType.MONSTER:
+                            _targetPosition = hitInfo.collider.gameObject.transform.position;
+                            ChangeState(eState.CHASE);
+                            break;
+
+                    }
+
+                }
             }
         }
 
         if (InputManger.instance.IsAttackButtonDown())
         {
-            
             ChangeState(eState.Attack);
         }
 
     }
- 
+
 }
