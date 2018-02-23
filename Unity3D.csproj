@@ -90,6 +90,7 @@
     <Compile Include="Assets\01Script\State\IdleState.cs" />
     <Compile Include="Assets\01Script\State\MoveState.cs" />
     <Compile Include="Assets\01Script\State\State.cs" />
+    <Compile Include="Assets\01Script\State\WargIdleState.cs" />
     <Compile Include="Assets\01Script\System\GameManger.cs" />
     <Compile Include="Assets\01Script\System\InputManger.cs" />
   </ItemGroup>

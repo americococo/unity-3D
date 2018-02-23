@@ -34,9 +34,8 @@ public class Player : Character
                 if (hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
                 {
                     _targetPosition = hitInfo.point;
-
+                    
                     _stateList[_stateType].UpdateInput();
-
                 }
                 else if (hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Character"))
                 {

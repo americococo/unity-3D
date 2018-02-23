@@ -10,8 +10,12 @@ public class Character : MonoBehaviour
         PLAYER,
         NONE,
     }
-
     protected eCharacterType _characterType = eCharacterType.NONE;
+
+
+
+
+
 
     void Start()
     {
@@ -51,7 +55,7 @@ public class Character : MonoBehaviour
 
     protected Dictionary<eState, State> _stateList = new Dictionary<eState, State>();
 
-    void InitState()
+    virtual protected void InitState()
     {
         StateInit(eState.Attack, new AttackState());
         StateInit(eState.IDLE, new IdleState());
@@ -59,8 +63,8 @@ public class Character : MonoBehaviour
         StateInit(eState.CHASE, new ChaseState());
     }
 
-
-    void StateInit(eState estate, State state)
+    
+    protected void StateInit(eState estate, State state)
     {
         state.Init(this);
         _stateList.Add(estate, state);
@@ -80,7 +84,22 @@ public class Character : MonoBehaviour
 
         }
     }
+
+
+
+    //idle
+    float _waitMaxTime = 0.0f;
+
+    public float GetWaitMaxTime()
+    {
+        return _waitMaxTime;
+    }
     
+
+    public void Patrol()
+    {
+        ChangeState(eState.PATROL);
+    }
 
     //Move
     protected Vector3 _targetPosition = Vector3.zero;

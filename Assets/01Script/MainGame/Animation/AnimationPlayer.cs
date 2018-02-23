@@ -17,7 +17,6 @@ public class AnimationPlayer : MonoBehaviour {
     System.Action _preMidiCallBack = null;
     System.Action _afterCallBack = null;
     System.Action _endCallBack = null;
-    
 
     public void play(string triggerName, 
         System.Action beginCallBack,

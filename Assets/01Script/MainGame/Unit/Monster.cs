@@ -8,5 +8,12 @@ public class Monster : Character
     {
         base.Init();
         _characterType = eCharacterType.MONSTER;
+        _waitMaxTime = 2.0f;
+    }
+
+    override protected void InitState()
+    {
+        base.InitState();
+        StateInit(eState.IDLE, new WargIdleState());
     }
 }
