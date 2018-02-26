@@ -12,7 +12,8 @@ public class WargIdleState : IdleState
     {
 
         _durationTime += Time.deltaTime;
-        if(_durationTime >  _character.GetWaitMaxTime())
+
+        if( _character.GetWaitMaxTime() <= _durationTime)
         {
             _durationTime = 0.0f;
 

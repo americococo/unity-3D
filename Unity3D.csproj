@@ -80,15 +80,17 @@
   <ItemGroup>
     <Compile Include="Assets\01Script\GameCamera.cs" />
     <Compile Include="Assets\01Script\MainGame\Animation\AnimationPlayer.cs" />
-    <Compile Include="Assets\01Script\MainGame\AttackArea.cs" />
-    <Compile Include="Assets\01Script\MainGame\HitArea.cs" />
+    <Compile Include="Assets\01Script\MainGame\Hit and attack Area\AttackArea.cs" />
+    <Compile Include="Assets\01Script\MainGame\Hit and attack Area\HitArea.cs" />
     <Compile Include="Assets\01Script\MainGame\Unit\Character.cs" />
     <Compile Include="Assets\01Script\MainGame\Unit\Monster.cs" />
     <Compile Include="Assets\01Script\MainGame\Unit\Player.cs" />
+    <Compile Include="Assets\01Script\MainGame\WayPoint.cs" />
     <Compile Include="Assets\01Script\State\AttackState.cs" />
     <Compile Include="Assets\01Script\State\ChaseState.cs" />
     <Compile Include="Assets\01Script\State\IdleState.cs" />
     <Compile Include="Assets\01Script\State\MoveState.cs" />
+    <Compile Include="Assets\01Script\State\PatrolState.cs" />
     <Compile Include="Assets\01Script\State\State.cs" />
     <Compile Include="Assets\01Script\State\WargIdleState.cs" />
     <Compile Include="Assets\01Script\System\GameManger.cs" />

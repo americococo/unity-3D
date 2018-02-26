@@ -51,7 +51,7 @@ backlog (잊어먹을까봐 대비용)
 -wargIdleState에서 patrol
  player에서 state updateInput 의 차이점 
  patrol을 캐릭터에 올릴 필요
- 
+ moveState 중복 위임
 
 
 

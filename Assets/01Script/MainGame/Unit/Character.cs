@@ -48,6 +48,7 @@ public class Character : MonoBehaviour
         MOVE,
         Attack,
         CHASE,
+        PATROL
     }
     
     protected eState _stateType = eState.IDLE;
@@ -61,6 +62,7 @@ public class Character : MonoBehaviour
         StateInit(eState.IDLE, new IdleState());
         StateInit(eState.MOVE, new MoveState());
         StateInit(eState.CHASE, new ChaseState());
+        StateInit(eState.PATROL, new PatrolState());
     }
 
     
@@ -88,7 +90,7 @@ public class Character : MonoBehaviour
 
 
     //idle
-    float _waitMaxTime = 0.0f;
+    protected float _waitMaxTime = 2.0f;
 
     public float GetWaitMaxTime()
     {
@@ -102,6 +104,13 @@ public class Character : MonoBehaviour
     }
 
     //Move
+
+    virtual public void ArriveDestination()
+    {
+        ChangeState(Character.eState.IDLE);
+    }
+    
+    
     protected Vector3 _targetPosition = Vector3.zero;
 
     public Vector3 GetTargetPosition()
