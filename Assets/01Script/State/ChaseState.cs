@@ -20,7 +20,7 @@ public class ChaseState : State
 
     override public void Update()
     {
-        Vector3 destination = _character.GetTargetPosition();
+        Vector3 destination = _character.getTarobject().transform.position;
 
         destination.y = _character.Getposition().y;
 
@@ -32,21 +32,18 @@ public class ChaseState : State
         if (_character.isGrounded())
             snapGround = Vector3.down;
 
-
         //목적지와 현재 위치가 일정 거리 이상이면 이동
 
         float distance = Vector3.Distance(destination, _character.Getposition());
-        if (0.5f < distance)
+        if (_character.GetAttackRange() < distance)
         {
-
             _character.Rotate(direction);
-
             _character.Move(_velocity * Time.deltaTime + snapGround);
         }
 
         else
         {
-            _character.ChangeState(Character.eState.Attack);
+                _character.ChangeState(Character.eState.Attack);
         }
     }
     

@@ -26,7 +26,7 @@ public class MoveState : State
 
         Vector3 direction = (_destination - _character.transform.position).normalized;
 
-        _velocity = direction * 6.0f;
+        _velocity = direction * _character.getSpeed();
 
         Vector3 snapGround = Vector3.zero;
         if (_character.isGrounded())

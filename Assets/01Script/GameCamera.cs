@@ -35,7 +35,7 @@ public class GameCamera : MonoBehaviour
     Vector3 _offset =new Vector3(0,1.5f,0);
     float _verticalAngle = 10.0f;
     float horizonalAngle = 0.0f;
-    float _distance =5.0f;
+    float _distance =11.0f;
 
     
 }

@@ -7,6 +7,7 @@ public class Player : Character
 
     public override void Init()
     {
+        _speed = 6.0f;
         base.Init();
         _characterType = eCharacterType.PLAYER;
     }
@@ -45,7 +46,8 @@ public class Player : Character
                     switch (character.getCharacterType())
                     {
                         case eCharacterType.MONSTER:
-                            _targetPosition = hitInfo.collider.gameObject.transform.position;
+                            //_targetPosition = hitInfo.collider.gameObject.transform.position;
+                            _targetObject = hitInfo.collider.gameObject;
                             ChangeState(eState.CHASE);
                             break;
 

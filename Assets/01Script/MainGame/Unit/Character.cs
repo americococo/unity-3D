@@ -105,6 +105,13 @@ public class Character : MonoBehaviour
 
     //Move
 
+    protected float _speed=3.0f;
+
+    public float getSpeed()
+    {
+        return _speed;
+    }
+
     virtual public void ArriveDestination()
     {
         ChangeState(Character.eState.IDLE);
@@ -112,6 +119,14 @@ public class Character : MonoBehaviour
     
     
     protected Vector3 _targetPosition = Vector3.zero;
+
+    protected GameObject _targetObject;
+
+    public GameObject getTarobject()
+    {
+        return _targetObject;
+    }
+
 
     public Vector3 GetTargetPosition()
     {
@@ -166,6 +181,12 @@ public class Character : MonoBehaviour
         return _characterType;
     }
 
+    protected float _attackRange =0.8f;
+
+    public float GetAttackRange()
+    {
+        return _attackRange;
+    }
 
     AttackArea[] _attackAreas;
 
@@ -182,6 +203,7 @@ public class Character : MonoBehaviour
             
         }
     }
+
     public void AttackEnd()
     {
         for (int i = 0; i < _attackAreas.Length; i++)
