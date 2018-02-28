@@ -13,13 +13,21 @@ public class ChaseState : State
         _character.SetAnimationTrigger("Move");
     }
 
-    override public void Stop()
-    {
-
-    }
-
     override public void Update()
     {
+        if(_character.IsMoveTargetPosition())
+        {
+            _character.ChangeState(Character.eState.IDLE);
+            return;
+        }
+        if (null == _character.getTarobject())
+        {
+            _character.StopChase();
+            return;
+        }
+
+        
+
         Vector3 destination = _character.getTarobject().transform.position;
 
         destination.y = _character.Getposition().y;
@@ -35,17 +43,25 @@ public class ChaseState : State
         //목적지와 현재 위치가 일정 거리 이상이면 이동
 
         float distance = Vector3.Distance(destination, _character.Getposition());
-        if (_character.GetAttackRange() < distance)
+        if (_character.GetAttackRange() > distance)
         {
-            _character.Rotate(direction);
-            _character.Move(_velocity * Time.deltaTime + snapGround);
+            _character.ChangeState(Character.eState.Attack);
         }
 
-        else
+        else if (_character.GetAttackRange() < distance)
         {
-                _character.ChangeState(Character.eState.Attack);
+          
+            _character.Rotate(direction);
+            _character.Move(_velocity * Time.deltaTime + snapGround);
+           
         }
+        
+        else if (_character.IsSearchRange(distance))
+        {
+             _character.setTarobject(null);
+        }
+        
     }
-    
+
 
 }

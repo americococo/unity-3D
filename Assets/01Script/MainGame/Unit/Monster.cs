@@ -22,6 +22,18 @@ public class Monster : Character
 
     }
 
+    public override bool IsSearchRange(float distance)
+    {
+        if (12.0f < distance)
+            return true;
+        return false;
+    }
+
+    public override void StopChase()
+    {
+        ChangeState(Character.eState.PATROL);
+    }
+
     public List<WayPoint> _wayPointList;
     int _wayPointIndex;
 
@@ -43,7 +55,6 @@ public class Monster : Character
                 Debug.Log("Check" + character);
                 _targetObject = other.gameObject;
                 ChangeState(eState.CHASE);
-                Debug.Log(3);
             }
         }
     }

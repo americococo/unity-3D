@@ -7,7 +7,7 @@ public class Player : Character
 
     public override void Init()
     {
-        _speed = 6.0f;
+        _speed = 10.0f;
         base.Init();
         _characterType = eCharacterType.PLAYER;
     }
@@ -16,6 +16,16 @@ public class Player : Character
     {
         UpdateInput();
         base.UpdateCharacter();
+    }
+
+    public override void StopChase()
+    {
+        ChangeState(eState.IDLE);
+    }
+
+    public override bool IsSearchRange(float distance)
+    {
+        return false;
     }
 
     void UpdateInput()
@@ -35,8 +45,8 @@ public class Player : Character
                 if (hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
                 {
                     _targetPosition = hitInfo.point;
-                    
-                    _stateList[_stateType].UpdateInput();
+                    _targetObject = null;
+                    _IsMoveTargetPosition = true;
                 }
                 else if (hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Character"))
                 {

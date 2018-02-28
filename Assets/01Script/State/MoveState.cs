@@ -13,15 +13,17 @@ public class MoveState : State
     {
         _destination = _character.GetTargetPosition();
         _character.SetAnimationTrigger("Move");
+        _character.setMovePosition(false);
     }
 
-    override public void Stop()
-    {
-
-    }
 
     override public void Update()
     {
+        if(_character.IsMoveTargetPosition())
+        {
+            _destination = _character.GetTargetPosition();
+        }
+
         _destination.y = _character.Getposition().y;
 
         Vector3 direction = (_destination - _character.transform.position).normalized;
@@ -50,8 +52,5 @@ public class MoveState : State
             _character.ArriveDestination();
         }
     }
-    override public void UpdateInput()
-    {
-        _destination = _character.GetTargetPosition();
-    }
+
 }

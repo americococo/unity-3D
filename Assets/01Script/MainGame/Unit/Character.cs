@@ -65,7 +65,10 @@ public class Character : MonoBehaviour
         StateInit(eState.PATROL, new PatrolState());
     }
 
-    
+    virtual public void StopChase()
+    {
+
+    }
     protected void StateInit(eState estate, State state)
     {
         state.Init(this);
@@ -81,6 +84,7 @@ public class Character : MonoBehaviour
     {
         if (_stateType != _nextStateType)
         {
+            _stateList[_stateType].Stop();
             _stateType = _nextStateType;
             _stateList[_stateType].Start();
 
@@ -116,17 +120,28 @@ public class Character : MonoBehaviour
     {
         ChangeState(Character.eState.IDLE);
     }
-    
-    
-    protected Vector3 _targetPosition = Vector3.zero;
 
+    protected bool _IsMoveTargetPosition=false;
+    protected Vector3 _targetPosition = Vector3.zero;
     protected GameObject _targetObject;
+
+    public bool IsMoveTargetPosition()
+    {
+        return _IsMoveTargetPosition;
+    }
+    public void setMovePosition(bool setTargetPositon)
+    {
+        _IsMoveTargetPosition = setTargetPositon;
+    }
 
     public GameObject getTarobject()
     {
         return _targetObject;
     }
-
+    public void setTarobject(GameObject gameObject)
+    {
+        _targetObject = gameObject;
+    }
 
     public Vector3 GetTargetPosition()
     {
@@ -212,7 +227,12 @@ public class Character : MonoBehaviour
         }
     }
 
-    
+    virtual public bool IsSearchRange(float distance)
+    {
+        return true;
+    }
+
+
     public void DemageInfo()
     {
         HitArea[] _HitAreas=GetComponentsInChildren<HitArea>();

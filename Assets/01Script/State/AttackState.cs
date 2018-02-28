@@ -35,9 +35,9 @@ public class AttackState : State
 
     }
 
-    public override void UpdateInput()
-    {
-        //combo Attack 처리
-    }
+    //public override void UpdateInput()
+    //{
+    //    //combo Attack 처리
+    //}
 
 }

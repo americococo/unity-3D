@@ -18,14 +18,10 @@ public class State
 
     virtual public void Stop()
     {
-
+        _character.setMovePosition(false);
     }
 
     virtual public void Update()
-    {
-
-    }
-    virtual public void UpdateInput()
     {
 
     }

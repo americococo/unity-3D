@@ -15,10 +15,6 @@ public class PatrolState : State
         _destination = _character.GetTargetPosition();
     }
 
-    override public void Stop()
-    {
-
-    }
 
     override public void Update()
     {
@@ -41,7 +37,7 @@ public class PatrolState : State
         float distance = Vector3.Distance(_destination, _character.Getposition());
         if (0.5f < distance)
         {
-
+            
             _character.Rotate(direction);
             _character.Move(_velocity * Time.deltaTime + snapGround);
         }
